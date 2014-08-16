@@ -22,6 +22,13 @@ echo "redis-cli -h localhost -p 6010 shutdown"
 (redis-cli -h localhost -p 6010 shutdown) || (error_message "Redis can't be stopped")
 
 #######################################
+# SIDEKIQ
+#######################################
+service_notification "Sidekiq" "try to stop"
+echo "($BUNDLE_EXEC bin/sidekiqctl stop $RAILS/tmp/pids/sidekiq.pid)"
+($BUNDLE_EXEC bin/sidekiqctl stop $RAILS/tmp/pids/sidekiq.pid) || (error_message "SidqKiq can't be stoppped")
+
+#######################################
 # DELAYED JOB
 #######################################
 service_notification "Delayed Job" "try to stop"

@@ -15,6 +15,13 @@ echo "($RAKE_DO ts:start)"
 ($RAKE_DO ts:start) || (error_message "Sphinx can't be started")
 
 #######################################
+# SIDEKIQ
+#######################################
+service_notification "SideKiq" "try to start"
+echo "($BUNDLE_EXEC bin/sidekiq -e $RAILS_ENV -d -C $RAILS_ROOT/config/sidekiq.config.yml)"
+($BUNDLE_EXEC bin/sidekiq -e $RAILS_ENV -d -C $RAILS_ROOT/config/sidekiq.config.yml) || (error_message "SidqKiq can't be started")
+
+#######################################
 # REDIS
 #######################################
 service_notification "Redis" "try to start"
