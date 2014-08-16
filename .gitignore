@@ -14,7 +14,6 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
-/db/sphinx
 
 # [Local machine]/[Deploy] protection
 config/database.yml
@@ -23,6 +22,10 @@ redis_db
 config/redis_*.config
 config/initializers/redis_initializer.rb
 
+/db/sphinx
+sphinx_indices
+config/sphinx.conf
 config/*.sphinx.conf
+config/thinking_sphinx.yml
 
 .DS_Store
