@@ -1,3 +1,4 @@
+# THIS FILE WILL BE REWRITEN WITH DEPLOY TOOL
 daemonize yes
 port 6010
 

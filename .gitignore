@@ -20,12 +20,15 @@ config/database.yml
 
 redis_db
 config/redis_*.config
-config/initializers/redis_initializer.rb
+config/initializers/redis.rb
 
 /db/sphinx
 sphinx_indices
 config/sphinx.conf
 config/*.sphinx.conf
 config/thinking_sphinx.yml
+
+config/sidekiq.config.yml
+config/initializers/sidekiq.rb
 
 .DS_Store
