@@ -17,7 +17,7 @@
 /db/sphinx
 
 # [Local machine]/[Deploy] protection
-# config/database.yml
+config/database.yml
 
 redis_db
 config/redis_*.config
