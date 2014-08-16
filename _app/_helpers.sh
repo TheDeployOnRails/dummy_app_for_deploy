@@ -22,3 +22,8 @@ function error_message {
 function service_notification {
   echo `$GREEN`$1`$STYLE_OFF`": "`$YELLOW`$2`$STYLE_OFF`
 }
+
+function execute {
+  echo `$CYAN`$1`$STYLE_OFF`
+  eval $1
+}

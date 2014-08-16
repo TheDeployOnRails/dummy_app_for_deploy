@@ -8,29 +8,31 @@ CURRENT_DIR=`dirname $0`
 source $CURRENT_DIR/_vars.sh
 
 #######################################
+# WHENEVER / CRON
+#######################################
+service_notification "Whenever" "try to clean CRON"
+(execute "$RVM_DO whenever --clear-crontab deploy_dummy_app") || (error_message "Whenever can't clean CRON")
+
+#######################################
 # SPHINX
 #######################################
 service_notification "SPHINX" "try to stop"
-echo "($RAKE_DO ts:stop)"
-($RAKE_DO ts:stop) || (error_message "Sphinx can't be stopped")
+(execute "$RAKE_DO ts:stop") || (error_message "Sphinx can't be stopped")
 
 ########################################
 # REDIS
 ########################################
 service_notification "Redis" "try to stop"
-echo "redis-cli -h localhost -p 6010 shutdown"
-(redis-cli -h localhost -p 6010 shutdown) || (error_message "Redis can't be stopped")
+(execute "redis-cli -h localhost -p 6010 shutdown") || (error_message "Redis can't be stopped")
 
 #######################################
 # SIDEKIQ
 #######################################
 service_notification "Sidekiq" "try to stop"
-echo "($BUNDLE_EXEC bin/sidekiqctl stop $RAILS/tmp/pids/sidekiq.pid)"
-($BUNDLE_EXEC bin/sidekiqctl stop $RAILS/tmp/pids/sidekiq.pid) || (error_message "SidqKiq can't be stoppped")
+(execute "$BUNDLE_EXEC bin/sidekiqctl stop $RAILS/tmp/pids/sidekiq.pid") || (error_message "SidqKiq can't be stoppped")
 
 #######################################
 # DELAYED JOB
 #######################################
 service_notification "Delayed Job" "try to stop"
-echo "($RVM_DO bin/delayed_job stop)"
-($RVM_DO bin/delayed_job stop) || (error_message "DelayedJob can't be stopped")
+(execute "$RVM_DO bin/delayed_job stop") || (error_message "DelayedJob can't be stopped")

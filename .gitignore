@@ -18,6 +18,8 @@
 # [Local machine]/[Deploy] protection
 config/database.yml
 
+schedule.rb
+
 redis_db
 config/redis_*.config
 config/initializers/redis.rb
