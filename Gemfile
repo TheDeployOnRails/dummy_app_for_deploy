@@ -27,11 +27,13 @@ gem 'newrelic_rpm'
 gem 'sidekiq'
 gem 'redis-rails'
 
+gem 'daemons'
 gem 'delayed_job'
 gem 'delayed_job_active_record'
 
 # Base gems
 gem 'haml'
+gem 'ffaker'
 gem 'bootstrap-sass', github: 'twbs/bootstrap-sass'
 
 gem 'sass-rails', '~> 4.0.3'
