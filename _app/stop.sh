@@ -36,3 +36,9 @@ service_notification "Sidekiq" "try to stop"
 #######################################
 service_notification "Delayed Job" "try to stop"
 (execute "$RVM_DO bin/delayed_job stop") || (error_message "DelayedJob can't be stopped")
+
+#######################################
+# UNICORN
+#######################################
+service_notification "Unicorn" "try to stop"
+execute "kill -QUIT `cat ./tmp/pids/unicorn.pid`"

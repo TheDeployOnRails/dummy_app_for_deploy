@@ -38,3 +38,9 @@ service_notification "Redis" "try to start"
 #######################################
 service_notification "Delayed Job" "try to start"
 (execute "$RVM_DO bin/delayed_job start -n 5") || (error_message "DelayedJob can't be started")
+
+#######################################
+# UNICORN
+#######################################
+service_notification "Unicorn" "try to start"
+execute "$BUNDLE_EXEC bin/unicorn -D -c $RAILS_ROOT/config/unicorn.rb -E development"

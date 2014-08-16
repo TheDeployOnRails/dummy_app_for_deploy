@@ -16,9 +16,9 @@
 /tmp
 
 # [Local machine]/[Deploy] protection
-config/database.yml
-
+unicorn.rb
 schedule.rb
+config/database.yml
 
 redis_db
 config/redis_*.config
