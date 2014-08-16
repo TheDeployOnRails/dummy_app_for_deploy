@@ -41,4 +41,4 @@ service_notification "Delayed Job" "try to stop"
 # UNICORN
 #######################################
 service_notification "Unicorn" "try to stop"
-execute "kill -QUIT `cat ./tmp/pids/unicorn.pid`"
+execute "kill -QUIT `cat $RAILS_ROOT/tmp/pids/unicorn.pid`"
