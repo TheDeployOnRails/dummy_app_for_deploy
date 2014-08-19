@@ -2,8 +2,8 @@
 ---
 :verbose: true
 :concurrency: 10
-:pidfile: <%= fetch :pids_dir %>/sidekiq.pid
-:logfile: <%= fetch :log_dir  %>/sidekiq.log
+:logfile: "./log/sidekiq.log"
+:pidfile: "./tmp/pids/sidekiq.pid"
 
 :queues:
   - [critical, 7]
