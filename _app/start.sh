@@ -20,18 +20,18 @@ service_notification "SPHINX" "try to start"
 (execute "$RAKE_DO ts:start") || (error_message "Sphinx can't be started")
 
 #######################################
-# SIDEKIQ
-#######################################
-service_notification "SideKiq" "try to start"
-(execute "$BUNDLE_EXEC bin/sidekiq -e $RAILS_ENV -d -C $RAILS_ROOT/config/sidekiq.config.yml") || (error_message "SidqKiq can't be started")
-
-#######################################
 # REDIS
 #######################################
 mkdir -p $RAILS_ROOT/redis_db
 
 service_notification "Redis" "try to start"
 (execute "redis-server $RAILS_ROOT/config/redis_6010.config") || (error_message "Redis can't be started")
+
+#######################################
+# SIDEKIQ
+#######################################
+service_notification "SideKiq" "try to start"
+(execute "$BUNDLE_EXEC bin/sidekiq -e $RAILS_ENV -d -C $RAILS_ROOT/config/sidekiq.config.yml") || (error_message "SidqKiq can't be started")
 
 #######################################
 # DELAYED JOB
