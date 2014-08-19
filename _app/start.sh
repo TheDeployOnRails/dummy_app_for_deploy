@@ -42,5 +42,7 @@ service_notification "Delayed Job" "try to start"
 #######################################
 # UNICORN
 #######################################
+mkdir -p tmp/sockets
+
 service_notification "Unicorn" "try to start"
 (execute "$BUNDLE_EXEC bin/unicorn -D -c $RAILS_ROOT/config/unicorn.rb -E development")  || (error_message "Unicorn can't be started")
